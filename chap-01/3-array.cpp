@@ -2,11 +2,11 @@
 
 int main()
 {
-    int array[] = { 0, 1, 2, 3 };
+    int values[] = { 0, 1, 2, 3 };
 
-    for (int i = 0; i < 4; ++i)
+    for (int value : values)
     {
-        std::cout << array[i] << std::endl;
+        std::cout << value << std::endl;
     }
 
     return 0;
