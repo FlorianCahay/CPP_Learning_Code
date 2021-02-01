@@ -4,3 +4,5 @@ add_executable(tp2-reminders
     Parsing.cpp
     Parsing.h
 )
+
+add_executable(histogram main.cpp Histogram.cpp)
