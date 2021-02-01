@@ -6,23 +6,30 @@
 
 | conteneur    | insertion (en tête / en fin) | suppression (en tête / en fin) | accès |
 |--------------|-----------|----------|-----------|
-| array        | N/A       | N/A      |           |
-| vector       |           |          |           |
-| deque        |           |          |           |
-| forward_list |           |          |           |
-| list         |           |          |           |
-| set          |           |          |           |
-| unordered_set|           |          |           |
+| array        | N/A       | N/A      | O(1)      |
+| vector       | O(n) / O(1) | O(n) / O(1) | O(1) |
+| deque        | O(1)      |  O(1)    | O(1)      |
+| forward_list | O(1) / O(n) | O(1) / O(n) | O(n) |
+| list         | O(1)      | O(1)     | O(n)      |
+| set          | O(log(n)) | O(log(n))| O(log(n)) |
+| unordered_set| O(1)      | O(1)     | O(1)      |
 
 2. Supposons que vous avez récupéré un itérateur sur un élément d'un conteneur avec : `auto it = std::find(c.begin(), c.end(), element_to_find)`.
 En fonction du type de conteneur, quelles sont les opérations succeptibles d'invalider cet itérateur ? Essayez d'être précis dans vos réponses.\
 Exemple : Si `c` est un `std::vector`, alors `it` peut être invalidé en cas de suppression d'un élément précédant `it` dans le conteneur.
 
+Voir doc
+
 3. Quelle est la différence entre les fonctions `push_back` et `emplace_back` de la classe `std::vector<std::string>` ?
+
+pour utiliser push_back() l'objet doit déjà être initialisé, il sera passé par copie,
+emplace_back() permet de passer des arguments directement pour que la fonction créé l'objet
 
 4. Dans le code suivant, la classe `RelativePoint` modélise un point en 2D, dont la position est relative à celle d'un point d'origine.
 Pourquoi est-ce que l'expression `std::vector<RelativePoint>(3)` ne compile pas, alors que `std::vector<AbsolutePoint>(3)` compile ?\
-Ajoutez ce qu'il manque à la classe `RelativePoint` pour faire compiler le code précédent.
+Ajoutez ce qu'il manque à la classe `RelativePoint` pour faire compiler le code précédent.\
+\
+Il faut un constructeur pas défaut pour RelativePoint
 
 ```cpp
 struct AbsolutePoint {
